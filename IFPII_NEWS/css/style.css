@@ -1,0 +1,459 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 1280px;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  width: 100%;
+  padding: 10px 4%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: .5s;
+  z-index: 100;
+}
+
+header.rolagem {
+  background: rgb(4, 82, 85);
+  padding: 20px 4%;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 30px;
+}
+
+header ul {
+  list-style-type: none;
+}
+
+header ul li {
+  display: inline-block;
+  margin: 0 40px;
+}
+
+header ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.banner {
+  height: 100vh;
+  background-image: url('../assets/bannernovo.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  position: relative; 
+}
+
+.banner::before {
+  content: ''; /* Adiciona um pseudo-elemento */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 124, 26, 0); /* Cor verde com opacidade */
+  z-index: 1; /* Garante que a sobreposição esteja na frente da imagem */
+}
+
+.banner h1 {
+  font-size: 4em;
+  color: aqua;
+  
+}
+
+.banner h1 span {
+  color: aqua;
+}
+
+.nav {
+  max-width: 1280px;
+  height: 70px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-list a {
+  font-size: 18px;
+  color: #fff;
+  padding-block: 16px;
+}
+
+.hero {
+  height: calc(100vh - 70px);
+  background: center / cover no-repeat url("./bg.jpg");
+}
+
+.hamburger {
+  display: none;
+  border: none;
+  background: none;
+  border-top: 3px solid #fff;
+  cursor: pointer;
+}
+
+.hamburger::after,
+.hamburger::before {
+  content: " ";
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  margin-top: 5px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-list a {
+  position: relative;
+  font-size: 18px;
+  color: #fff;
+  padding-block: 5px;
+}
+
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.nav-list a:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 750px) {
+  .banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .banner h1 {
+    font-size: 3em;
+  }
+
+  .banner h1 span {
+    font-size: 1.5em;
+  }
+
+  .hamburger {
+    display: block;
+    z-index: 1;
+  }
+
+  .nav-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(4, 82, 85);
+    clip-path: circle(0px at 90% -15%);
+    transition: 1s ease-out;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0;
+    pointer-events: none;
+  }
+
+  .nav-list a {
+    font-size: 24px;
+    opacity: 0;
+  }
+
+  .nav-list li:nth-child(1) a {
+    transition: 0.5s 0.2s;
+  }
+
+  .nav-list li:nth-child(2) a {
+    transition: 0.5s 0.4s;
+  }
+
+  .nav-list li:nth-child(3) a {
+    transition: 0.5s 0.6s;
+  }
+
+  .nav.active .nav-list {
+    clip-path: circle(1500px at 90% -15%);
+    pointer-events: all;
+  }
+
+  .nav.active .nav-list a {
+    opacity: 1;
+  }
+
+  .nav.active .hamburger {
+    position: fixed;
+    top: 26px;
+    right: 16px;
+    border-top-color: transparent;
+  }
+
+  .nav.active .hamburger::before {
+    transform: rotate(135deg);
+  }
+
+  .nav.active .hamburger::after {
+    transform: rotate(-135deg);
+    top: -7px;
+  }
+}
+
+footer {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.footer-sections {
+  padding: 20px; /* Adicione um preenchimento de 20px */
+  display: flex;
+  justify-content: space-around;
+}
+
+.section {
+  flex: 1;
+  text-align: left;
+}
+
+.section h3 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.section p {
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons a {
+  color: #ccc;
+  margin: 0 10px;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #fff;
+}
+
+.options {
+  margin-top: 20px;
+}
+
+.options a {
+  color: #ccc;
+  margin: 0 10px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.options a:hover {
+  color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  footer {
+    padding: 20px 0;
+  }
+
+  .footer-sections {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+.main {
+  padding: 20px;
+  margin-top: 20px;
+}
+
+#destaques {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  background-color: rgb(255, 255, 255);
+}
+
+#novidades,
+#eventos-do-campus,
+#divulgaçao {
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+#novidades h2,
+#eventos-do-campus h2,
+#divulgaçao h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+article {
+  margin-bottom: 20px;
+}
+
+article h3 {
+  color: #555;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+article p {
+  color: #777;
+  font-size: 16px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-list li {
+  margin-bottom: 10px;
+}
+
+.contact-list a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.contact-list a:hover {
+  color: #fff;
+}
+
+.contact-list a i {
+  margin-right: 10px;
+}
+
+.wg1 {
+  grid-column: span 1;
+}
+
+.wg2 {
+  grid-column: span 2;
+}
+
+.hg1 {
+  grid-row: span 1;
+}
+
+.hg2 {
+  grid-row: span 2;
+}
+
+.card {
+  width: 100%;
+  max-width: 250px; /* Ajuste o tamanho conforme necessário */
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+}
+
+.description {
+  padding: 15px;
+  background-color: #fff;
+}
+
+.description h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.description p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* CSS existente */
+
+@media (max-width: 768px) {
+  #novidades {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centralizar os itens na horizontal */
+  }
+
+  .card {
+    width: calc(100% - 40px); /* 40px de margem total (20px em cada lado) */
+  }
+}
+
+@media (min-width: 769px) {
+  #novidades {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card {
+    width: calc(33.33% - 40px); /* 40px de margem total (20px em cada lado) */
+  }
+}
